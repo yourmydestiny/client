@@ -22,8 +22,8 @@ const ResultPage = () => {
   return (
     <Container>
       <StyledSlider {...settings}>
-        <ResultList state={state} dateType={state} currentPeriod="current" />
-        <ResultList state={state} dateType={state} currentPeriod="future" />
+        <ResultList dateType={state} currentPeriod="current" />
+        <ResultList dateType={state} currentPeriod="future" />
       </StyledSlider>
       {openModal && (
         <PopUp
