@@ -41,7 +41,7 @@ const SecondQuestions = ({
       </ContentsBox>
       {selectedInfo.fifth && (
         <ContentsBox>
-          <SubText>내일 난 이걸 꼭 보고싶어</SubText>
+          <SubText>인생에서 이건 꼭 한번 해보고 싶어</SubText>
           <FlexBox>
             {SECOND.map(({ id, text }) =>
               selectedInfo.sixth === id ? (
@@ -70,7 +70,7 @@ const SecondQuestions = ({
       {selectedInfo.sixth && (
         <>
           <ContentsBox>
-            <SubText>내일 난 이걸 꼭 보고싶어</SubText>
+            <SubText>나는 이런 사람일 거야</SubText>
             <SelectBox>
               {THIRD.map(({ id, text }) =>
                 selectedInfo.seventh === id ? (

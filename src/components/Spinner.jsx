@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import SpinnerImg from '../assets/jpeg/SpinnerImg.gif';
+import SpinnerImg2 from '../assets/jpeg/SpinnerImg2.gif';
 
 const Spinner = () => {
   return (
     <Container>
       <SpinnerBox>
-        <Img src={SpinnerImg} alt="스피너" />
+        <Img src={SpinnerImg2} alt="스피너" />
         <Text>나의 제주 모습을</Text>
         <Text>만들고 있어요</Text>
       </SpinnerBox>

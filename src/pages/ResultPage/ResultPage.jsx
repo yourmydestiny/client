@@ -19,7 +19,6 @@ const ResultPage = () => {
   console.log(state);
 
   SwiperCore.use([Navigation]);
-
   const settings = {
     dots: false,
     infinite: false,
@@ -27,6 +26,7 @@ const ResultPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <Container>
       <Swiper>
