@@ -4,21 +4,19 @@ import { ReactComponent as Marker } from '../../assets/svg/marker.svg';
 import KakaoShare from './KakaoShare';
 import { getResultInfo } from 'apis/apis';
 import { useQuery } from 'react-query';
+import { ReactComponent as Check } from '../../assets/svg/check.svg';
+import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 
 const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
-  const { isLoading, isError, data, error } = useQuery(
-    'getResultInfo',
-    () => getResultInfo(dateType),
-    {
-      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
-      onSuccess: data => {
-        console.log(data);
-      },
-      onError: e => {
-        console.log(e.message);
-      },
-    }
-  );
+  const { data } = useQuery('getResultInfo', () => getResultInfo(dateType), {
+    refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+    onSuccess: data => {
+      console.log(data);
+    },
+    onError: e => {
+      console.log(e.message);
+    },
+  });
   const [copiedState, setCopiedState] = useState(false);
   const periodIndex = currentPeriod === 'current' ? 0 : 1;
   const CURRENT_URL = 'https://mytamla.netlify.app/';
@@ -86,11 +84,14 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
       <SubSecondImageContainer>
         {data?.data[periodIndex].holdingCreature.map((value, index) => {
           return (
-            <>
+            <CreatureContent>
               <SubSecondImage key={index} src={value.image} />
               <SubSecondName>{value?.name}</SubSecondName>
-              <SubSecondKind>{value?.kind}</SubSecondKind>
-            </>
+              <KindContainer>
+                {value.kind === '보호종' ? <Check /> : <UnCheck />}
+                <SubSecondKind kind={value.kind}>{value?.kind}</SubSecondKind>
+              </KindContainer>
+            </CreatureContent>
           );
         })}
       </SubSecondImageContainer>
@@ -147,15 +148,6 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.MAIN_BACKGROUND};
 `;
 
-const Header = styled.div`
-  display: flex;
-  width: calc(100% - 37px);
-  margin: auto;
-  margin-bottom: 53px;
-  color: ${({ theme }) => theme.colors.GRAY_000};
-  justify-content: space-between;
-`;
-
 const MainCoast = styled.div`
   text-align: center;
   color: ${({ theme }) => theme.colors.GRAY_600};
@@ -174,6 +166,7 @@ const MainImage = styled.img`
   width: auto;
   height: 335px;
   width: calc(100% + 40px);
+  z-index: 9999;
   margin: 0 0 22px -20px;
 `;
 
@@ -213,10 +206,11 @@ const SubSecondText = styled.p`
   margin-bottom: 38px;
 `;
 
-const SubSecondStory = styled.p`
-  font-weight: 500;
-  line-height: 24px;
-  margin-bottom: 59px;
+const CreatureContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SubSecondImageContainer = styled.div`
@@ -224,21 +218,30 @@ const SubSecondImageContainer = styled.div`
   justify-content: space-between;
   margin: auto;
   margin-bottom: 40px;
-  width: 287px;
+  width: 350px;
 `;
 
 const SubSecondImage = styled.img`
   width: 88px;
-  margin-right: 16px;
   height: 89px;
 `;
 
 const SubSecondName = styled.div`
   font-size: 15px;
+  margin-bottom: 4px;
   color: ${({ theme }) => theme.colors.GRAY_500};
 `;
 
-const SubSecondKind = styled.div``;
+const KindContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const SubSecondKind = styled.div`
+  color: ${props =>
+    props.kind === '보호종' ? props.theme.colors.ACTIVE_COLOR : '#FF5858'};
+  margin-left: 6px;
+`;
 
 const SubThirdText = styled.p`
   font-size: 20px;
