@@ -62,11 +62,6 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
 
   return (
     <Container>
-      <Header>
-        <PastText currentPeriod={currentPeriod}>1980</PastText>
-        <HeaderText currentPeriod={currentPeriod}>{todayInfo.year}</HeaderText>
-        <FutureText currentPeriod={currentPeriod}>2060</FutureText>
-      </Header>
       <MainCoast>{`${
         currentPeriod === 'current'
           ? '오늘의'
@@ -130,6 +125,7 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
 export default ResultList;
 
 const Container = styled.div`
+  width: 100%;
   padding-top: 46px;
   padding: 20px;
   height: 100%;
