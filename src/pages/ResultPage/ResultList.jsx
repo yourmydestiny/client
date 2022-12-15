@@ -41,15 +41,19 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
       year: day.getFullYear(),
       date: day.getDate(),
       week: WEEKDAY[day.getDay()],
-      month: day.getMonth + 1,
+      month: day.getMonth() + 1,
     };
   };
 
   const todayInfo = getHeaderText();
-
+  console.log(todayInfo);
   const getPeriodText = () => {
-    return `${todayInfo.year}`;
+    const year = currentPeriod === 'current' ? todayInfo.year : 2060;
+
+    return `${year}년 ${todayInfo.month}월 ${todayInfo.date}일`;
   };
+
+  const PERIOD_TEXT = getPeriodText();
 
   const handleCopy = () => {
     setCopiedState(true);
@@ -69,7 +73,7 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
           ? '과거의'
           : '미래의'
       } ${data?.data[periodIndex].coastalName}`}</MainCoast>
-      <CurrentPeriodYear>{() => getPeriodText()}</CurrentPeriodYear>
+      <CurrentPeriodYear>{PERIOD_TEXT}</CurrentPeriodYear>
       <MainImage src={data?.data[periodIndex].coastalImage} />
       <MainText>{data?.data[periodIndex].coastalContent}</MainText>
       <SubFirstText>내가 있는 위치는?</SubFirstText>
@@ -81,10 +85,15 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
       <SubSecondText>내가 가진 식물은?</SubSecondText>
       <SubSecondImageContainer>
         {data?.data[periodIndex].holdingCreature.map((value, index) => {
-          return <SubSecondImage key={index} src={value.image} />;
+          return (
+            <>
+              <SubSecondImage key={index} src={value.image} />
+              <SubSecondName>{value?.name}</SubSecondName>
+              <SubSecondKind>{value?.kind}</SubSecondKind>
+            </>
+          );
         })}
       </SubSecondImageContainer>
-      <SubSecondStory>{data?.data[periodIndex].creatureContent}</SubSecondStory>
       <SubThirdText>주변에 이런 곳은 어때요?</SubThirdText>
       <AroundContainer>
         {data?.data[periodIndex].place.map((value, index) => {
@@ -117,7 +126,11 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
           복사
         </ClipboardButton>
       </ClipboardContainer>
-      <KakaoShare />
+      <KakaoShare
+        title={data?.data[periodIndex].coastalName}
+        description={data?.data[periodIndex].coastalContent}
+        imageUrl={data?.data[periodIndex].coastalImage}
+      />
     </Container>
   );
 };
@@ -127,7 +140,6 @@ export default ResultList;
 const Container = styled.div`
   width: 100%;
   padding-top: 46px;
-  padding: 20px;
   height: 100%;
   overflow: auto;
   font-size: 15px;
@@ -153,59 +165,9 @@ const MainCoast = styled.div`
 
 const CurrentPeriodYear = styled.div`
   font-size: 23px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.GRAY_000};
   margin-bottom: 33px;
-`;
-
-const HeaderText = styled.button`
-  border-radius: 5px;
-  font-weight: ${props => (props.currentPeriod === 'current' ? '600' : '400')};
-  padding: ${props =>
-    props.currentPeriod === 'current' ? `4px 12px 4px 12px` : 'transparent'};
-  background-color: ${props =>
-    props.currentPeriod === 'current'
-      ? props.theme.colors.ACTIVE_COLOR
-      : 'transparent'};
-  cursor: ${props =>
-    props.currentPeriod === 'current' ? 'not-allowed' : 'pointer'};
-  color: ${props =>
-    props.currentPeriod === 'current'
-      ? props.theme.colors.GRAY_700
-      : props.theme.colors.GRAY_500};
-`;
-
-const PastText = styled.button`
-  border-radius: 5px;
-  font-weight: ${props => (props.currentPeriod === 'past' ? '600' : '400')};
-  padding: ${props =>
-    props.currentPeriod === 'past' ? `4px 12px 4px 12px` : 'transparent'};
-  background-color: ${props =>
-    props.currentPeriod === 'past'
-      ? props.theme.colors.ACTIVE_COLOR
-      : 'transparent'};
-  cursor: ${props =>
-    props.currentPeriod === 'past' ? 'not-allowed' : 'pointer'};
-  color: ${props =>
-    props.currentPeriod === 'past'
-      ? props.theme.colors.GRAY_700
-      : props.theme.colors.GRAY_500};
-`;
-
-const FutureText = styled.button`
-  border-radius: 5px;
-  font-weight: ${props => (props.currentPeriod === 'future' ? '600' : '400')};
-  padding: ${props =>
-    props.currentPeriod === 'future' ? `4px 12px 4px 12px` : 'transparent'};
-  background-color: ${props =>
-    props.currentPeriod === 'future'
-      ? props.theme.colors.ACTIVE_COLOR
-      : 'transparent'};
-  cursor: ${props =>
-    props.currentPeriod === 'future' ? 'not-allowed' : 'pointer'};
-  color: ${props =>
-    props.currentPeriod === 'future'
-      ? props.theme.colors.GRAY_700
-      : props.theme.colors.GRAY_500};
 `;
 
 const MainImage = styled.img`
@@ -270,6 +232,13 @@ const SubSecondImage = styled.img`
   margin-right: 16px;
   height: 89px;
 `;
+
+const SubSecondName = styled.div`
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.GRAY_500};
+`;
+
+const SubSecondKind = styled.div``;
 
 const SubThirdText = styled.p`
   font-size: 20px;
