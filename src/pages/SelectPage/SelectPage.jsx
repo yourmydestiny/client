@@ -38,7 +38,7 @@ const SelectPage = () => {
 const Container = styled.div`
   padding: 20px;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background: #1e2029;
 `;
 

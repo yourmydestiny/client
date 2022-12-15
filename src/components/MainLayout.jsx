@@ -17,21 +17,12 @@ const StyledMainLayout = styled.div`
 const LayoutWrapper = styled.div`
   width: 100%;
   display: inline-block;
-  min-height: 100vh;
-`;
-
-const BackGroundImage = styled.img`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 100vh;
 `;
 
 const MainLayout = ({ children }) => {
   return (
     <LayoutWrapper>
-      <BackGroundImage alt="" />
       <StyledMainLayout>{children}</StyledMainLayout>
     </LayoutWrapper>
   );
