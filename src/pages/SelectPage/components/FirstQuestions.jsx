@@ -181,9 +181,8 @@ const Container = styled.div`
 const HeaderText = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 46px;
   width: 100%;
-  height: 60px;
+  height: 50px;
   color: #858899;
   font-size: 16px;
 `;

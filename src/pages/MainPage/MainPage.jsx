@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainImg from '../../assets/jpeg/mainImg.jpeg';
+import MainBg from '../../assets/jpeg/MainBg.gif';
 import MainLogo from '../../assets/jpeg/MainLogo.png';
 import StartLogo from '../../assets/jpeg/StartLogo.png';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
@@ -8,6 +8,7 @@ import Snowfall from 'react-snowfall';
 
 const MainPage = () => {
   const navigate = useNavigate();
+
   return (
     <Container
       onClick={() => {
@@ -25,7 +26,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  background-image: url(${MainImg});
+  background-image: url(${MainBg});
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -33,11 +34,11 @@ const Container = styled.div`
 
 const Logo = styled.div`
   position: absolute;
-  top: 25%;
+  top: 23%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 329px;
-  height: 158px;
+  width: 300px;
+  height: 130px;
   background-image: url(${MainLogo});
   background-size: cover;
   background-repeat: no-repeat;
