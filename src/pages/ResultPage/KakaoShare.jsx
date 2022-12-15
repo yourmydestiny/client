@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Kakaotalk from '../../assets/svg/kakaotalk.png';
 
-const KakaoShare = () => {
+const KakaoShare = ({ title, description, image }) => {
   useEffect(() => {
     initKakao(); //
   }, []);
@@ -11,7 +11,7 @@ const KakaoShare = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {
-        kakao.init('91622bf40223d7cd1d4a9c0a998992d2');
+        kakao.init('3c9e188a3a3f0455455544526ddab9dc');
       }
     }
   };
@@ -31,10 +31,9 @@ const KakaoShare = () => {
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '타이틀',
-        description: '임시',
-        imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRYdCi6lknx1YFl88O8UGHwX-WB2dsYTAzdF-iFCVvJ1kGb_KyRmvHn_les47-MUv4exw&usqp=CAU',
+        title,
+        description,
+        imageUrl: image,
         link: {
           mobileWebUrl:
             'https://upload3.inven.co.kr/upload/2021/05/11/bbs/i15045581284.jpg',
@@ -54,7 +53,9 @@ const KakaoShare = () => {
     });
   };
 
-  return <img width="100%" src={Kakaotalk} onClick={shareKakao} />;
+  return (
+    <img width="100%" height="55px" src={Kakaotalk} onClick={shareKakao} />
+  );
 };
 
 export default KakaoShare;

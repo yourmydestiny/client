@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledMainLayout = styled.div`
   position: relative;
   width: 100%;
-  max-width: 390px;
+  max-width: 430px;
   border: 1px solid black;
   height: 100%;
   margin: auto;
