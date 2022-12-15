@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as DisTriBtn } from '../../../assets/disTriBtn.svg';
-import { ReactComponent as ActTriBtn } from '../../../assets/actTriBtn.svg';
+import { ReactComponent as DisTriBtn } from '../../../assets/svg/disTriBtn.svg';
+import { ReactComponent as ActTriBtn } from '../../../assets/svg/actTriBtn.svg';
 
 const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
   console.log(selectedInfo);
