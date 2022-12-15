@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const StyledMainLayout = styled.div`
@@ -17,10 +17,26 @@ const StyledMainLayout = styled.div`
 const LayoutWrapper = styled.div`
   width: 100%;
   display: inline-block;
-  height: 100vh;
+  height: calc(100vh);
+  .scrollLock {
+    overflow: hidden;
+  }
 `;
 
 const MainLayout = ({ children }) => {
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed;
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = '';
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+    };
+  }, []);
+
   return (
     <LayoutWrapper>
       <StyledMainLayout>{children}</StyledMainLayout>
