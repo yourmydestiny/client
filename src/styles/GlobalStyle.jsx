@@ -18,6 +18,11 @@ const GlobalStyle = createGlobalStyle`
     background: inherit;
     outline: none;
   }
+
+  p{
+    margin: 0;
+  }
+
       `;
 
 export default GlobalStyle;
