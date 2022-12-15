@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background: inherit;
     outline: none;
+    padding: 0;
   }
 
   p{
