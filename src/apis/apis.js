@@ -18,7 +18,6 @@ export const postSelectedInfo = async data => {
     // } catch (error) {
     //   throw new Error(error);
     // }
-    console.log(basicApi);
     const response = await axios.post(
       `http://ec2-43-201-87-82.ap-northeast-2.compute.amazonaws.com:8080/api/coasts`,
       data

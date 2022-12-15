@@ -12,6 +12,8 @@ const ResultPage = () => {
 
   const { state } = useLocation();
 
+  console.log(state);
+
   const settings = {
     dots: false,
     infinite: false,
