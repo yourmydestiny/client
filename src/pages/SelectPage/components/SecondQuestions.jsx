@@ -1,8 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMutation } from 'react-query';
 
 const SecondQuestions = ({ selectedInfo, setSelectedInfo }) => {
-  console.log(selectedInfo);
+  // const postSelectedInfo = useMutation(PostDateError, {
+  //   onSuccess: data => {
+  //     let [err, result] = data;
+  //     err && console.log(result);
+  //   },
+  // });
+
+  //시간 설정 후 시간값을 서버로 보내는 함수
+  // const handleClickTimeInfo = () => {
+  //   setGetAllData(false);
+  //   postTimeInfo.mutate({ current_date: ConvertStrCurTime() });
+  // };
+
   return (
     <Container>
       <ContentsBox>
@@ -34,29 +47,29 @@ const SecondQuestions = ({ selectedInfo, setSelectedInfo }) => {
       {selectedInfo.fifth && (
         <ContentsBox>
           <SubText>내일 난 이걸 꼭 보고싶어</SubText>
-          <SelectBox>
+          <FlexBox>
             {SECOND.map(({ id, text }) =>
               selectedInfo.sixth === id ? (
-                <ActiveSelectItem
+                <ActiveFlexItem
                   key={id}
                   onClick={() => {
                     setSelectedInfo({ ...selectedInfo, sixth: id });
                   }}
                 >
                   {text}
-                </ActiveSelectItem>
+                </ActiveFlexItem>
               ) : (
-                <SelectItem
+                <FlexItem
                   key={id}
                   onClick={() => {
                     setSelectedInfo({ ...selectedInfo, sixth: id });
                   }}
                 >
                   {text}
-                </SelectItem>
+                </FlexItem>
               )
             )}
-          </SelectBox>
+          </FlexBox>
         </ContentsBox>
       )}
       {selectedInfo.sixth && (
@@ -119,12 +132,15 @@ const SECOND = [
 const THIRD = [
   { id: 1, text: '친절한' },
   { id: 2, text: '소박한' },
-  { id: 3, text: '화려한' },
-  { id: 4, text: '느긋한' },
+  { id: 3, text: '트렌디한' },
+  { id: 4, text: '화려한' },
+  { id: 5, text: '느긋한' },
+  { id: 6, text: '마이웨이' },
 ];
 
 const Container = styled.div`
   width: 100%;
+  padding-top: 60px;
 `;
 
 const ContentsBox = styled.div`
@@ -138,7 +154,7 @@ const ContentsBox = styled.div`
 const SubText = styled.p`
   color: white;
   margin: 8px 0;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
 `;
 
@@ -150,6 +166,39 @@ const SelectBox = styled.div`
   margin-bottom: 26px;
   width: 100%;
   height: 96px;
+`;
+
+const FlexBox = styled.div`
+  display: flex;
+  padding: 0 10px;
+  margin-bottom: 26px;
+  width: 100%;
+  height: 96px;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+`;
+
+const FlexItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 93.6px;
+  height: 40px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  padding: 0 20px;
+  border-radius: 11px;
+  border: 1px solid #abc2a7;
+  color: #abc2a7;
+  font-size: 14px;
+  cursor: pointer;
+`;
+
+const ActiveFlexItem = styled(FlexItem)`
+  background: #84f5b8;
+  color: #1e2029;
+  border: none;
+  cursor: pointer;
 `;
 
 const SelectItem = styled.button`
@@ -184,6 +233,7 @@ const ActiveBtn = styled.button`
   border-radius: 8px;
   font-size: 20px;
   font-weight: 600;
+  color: #1e2029;
   cursor: pointer;
 `;
 

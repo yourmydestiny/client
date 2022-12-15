@@ -8,8 +8,9 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
 
   return (
     <Container>
+      <HeaderText>선택지를 선택해주세요.</HeaderText>
       <ContentsBox>
-        <SubText>다른 사람들은 내가 이런 편이래</SubText>
+        <SubText>다른 사람들은 제가 이렇다고 말해요.</SubText>
         <SelectBox>
           {FIRST.map(({ id, text }) =>
             selectedInfo.first === id ? (
@@ -36,7 +37,7 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
       </ContentsBox>
       {selectedInfo.first && (
         <ContentsBox>
-          <SubText>나는 이걸 하면 행복할 거 같아</SubText>
+          <SubText>쉬는 시간에 저는 이걸 할래요.</SubText>
           <SelectBox>
             {SECOND.map(({ id, text }) =>
               selectedInfo.second === id ? (
@@ -64,7 +65,7 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
       )}
       {selectedInfo.second && (
         <ContentsBox>
-          <SubText>당장 어떤 걸 가고 싶어?</SubText>
+          <SubText>당장 이걸 가고 싶어요.</SubText>
           <SelectBox>
             {THIRD.map(({ id, text }) =>
               selectedInfo.third === id ? (
@@ -93,7 +94,7 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
       {selectedInfo.third && (
         <>
           <ContentsBox>
-            <SubText>세상이 망한다면 마지막으로 뭘 먹을까?</SubText>
+            <SubText>세상이 망한다면 마지막으로 이걸 먹겠어요.</SubText>
             <SelectBox>
               {FOURTH.map(({ id, text }) =>
                 selectedInfo.fourth === id ? (
@@ -174,8 +175,17 @@ const FOURTH = [
 
 const Container = styled.div`
   width: 100%;
-  /* height: 100%; */
   background: #1e2029;
+`;
+
+const HeaderText = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 46px;
+  width: 100%;
+  height: 60px;
+  color: #858899;
+  font-size: 16px;
 `;
 
 const ContentsBox = styled.div`
@@ -189,7 +199,7 @@ const ContentsBox = styled.div`
 const SubText = styled.p`
   margin: 8px 0;
   color: white;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
 `;
 

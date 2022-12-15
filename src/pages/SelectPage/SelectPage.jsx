@@ -29,7 +29,6 @@ const SelectPage = () => {
 
   return (
     <Container>
-      <HeaderText>선택지를 선택해주세요.</HeaderText>
       <>{pages[pageIdx]}</>
     </Container>
   );
@@ -40,12 +39,6 @@ const Container = styled.div`
   width: 100%;
   min-height: 100%;
   background: #1e2029;
-`;
-
-const HeaderText = styled.p`
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
 `;
 
 export default SelectPage;
