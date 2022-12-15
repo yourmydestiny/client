@@ -19,16 +19,6 @@ const KakaoShare = ({ title, description, image }) => {
 
   //버튼을 누르면 실행되는 함수
   const shareKakao = () => {
-    //이부분이 매우 헷갈림 여러 사이트를 참고했는데 이 sendDefault부분을 잘 봐야한다.
-    // const infosForm =
-    //   window.location.href.split('/')[3] === 'community'
-    //     ? recipeDetail
-    //     : {
-    //         title: recipeDetail.recipeInfo.recipeNmKo,
-    //         description: recipeDetail.recipeInfo.summary,
-    //         button: '레시피 보러가기',
-    //         imgUrl: recipeDetail.recipeInfo.imgUrl,
-    //       };
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {

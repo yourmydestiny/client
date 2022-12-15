@@ -10,12 +10,8 @@ import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
   const { data } = useQuery('getResultInfo', () => getResultInfo(dateType), {
     refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
-    onSuccess: data => {
-      console.log(data);
-    },
-    onError: e => {
-      console.log(e.message);
-    },
+    onSuccess: data => {},
+    onError: e => {},
   });
   const [copiedState, setCopiedState] = useState(false);
   const periodIndex = currentPeriod === 'current' ? 0 : 1;
@@ -44,7 +40,6 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
   };
 
   const todayInfo = getHeaderText();
-  console.log(todayInfo);
   const getPeriodText = () => {
     const year = currentPeriod === 'current' ? todayInfo.year : 2060;
 

@@ -1,7 +1,5 @@
-import { BASE_URL, basicApi } from 'lib/config';
+import { basicApi } from 'lib/config';
 import axios from '../../node_modules/axios/index';
-
-console.log(BASE_URL);
 
 export const postSelectedInfo = async data => {
   try {
