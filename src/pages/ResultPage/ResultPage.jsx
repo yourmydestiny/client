@@ -19,6 +19,7 @@ const ResultPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <Container>
       <StyledSlider {...settings}>

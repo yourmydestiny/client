@@ -8,7 +8,7 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
 
   return (
     <Container>
-      <HeaderText>선택지를 선택해주세요.</HeaderText>
+      <HeaderText>가장 나다운 말을 선택해주세요.</HeaderText>
       <ContentsBox>
         <SubText>다른 사람들은 제가 이렇다고 말해요.</SubText>
         <SelectBox>
