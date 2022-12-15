@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledMainLayout = styled.div`
   position: relative;
-  padding-top: 44px;
   width: 100%;
   max-width: 430px;
   border: 1px solid black;

@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <p>adad</p>
-      <p>adad</p>
+      <button
+        onClick={() => {
+          navigate(`/selectpage`);
+        }}
+      >
+        next
+      </button>
     </div>
   );
 };
