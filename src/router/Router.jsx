@@ -1,3 +1,4 @@
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import ResultPage from 'pages/ResultPage/ResultPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage/MainPage';
@@ -10,6 +11,7 @@ export default function RootRoute() {
         <Route path="/" element={<MainPage />} />
         <Route path="/selectpage" element={<SelectPage />} />
         <Route path="/resultlist" element={<ResultPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
