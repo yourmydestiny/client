@@ -8,7 +8,7 @@ import { ReactComponent as Check } from '../../assets/svg/check.svg';
 import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 
 const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
-  const { data } = useQuery('getResultInfo', () => getResultInfo('beomseom'), {
+  const { data } = useQuery('getResultInfo', () => getResultInfo(dateType), {
     refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
     onSuccess: data => {
       console.log(data);
@@ -101,6 +101,24 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
           return <AroundSolo key={index} src={value.image} />;
         })}
       </AroundContainer>
+      {currentPeriod === 'future' ? (
+        <WhyThis>왜 이렇게 되었을까요?</WhyThis>
+      ) : (
+        ''
+      )}
+      {currentPeriod === 'future' ? (
+        <WhyThisText>
+          온실가스 배출이 늘어나면서 수온이 상승해
+          <br />
+          토종 생물들이 더 이상 살 수 없게 되었어요.
+          <br /> 해수면 상승이 가속화되어 제주가 빠르게 잠겼어요.
+          <br />
+          해양쓰레기가 늘어나면서 생물들이 살기 어려운 환경이 되어갔어요. 우리가
+          가고 싶은 제주는 이렇게 사라져가요.
+        </WhyThisText>
+      ) : (
+        ''
+      )}
       <FitFriendContainer>
         {friends.map((friend, index) => {
           return (
@@ -130,7 +148,7 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
       <KakaoShare
         title={data?.data[periodIndex].coastalName}
         description={data?.data[periodIndex].coastalContent}
-        imageUrl={data?.data[periodIndex].coastalImage}
+        image={data?.data[periodIndex].coastalImage}
       />
     </Container>
   );
@@ -163,10 +181,8 @@ const CurrentPeriodYear = styled.div`
 `;
 
 const MainImage = styled.img`
-  width: auto;
   height: 335px;
   width: calc(100% + 40px);
-  z-index: 9999;
   margin: 0 0 22px -20px;
 `;
 
@@ -204,6 +220,18 @@ const SubFirstMainText = styled.div`
 const SubSecondText = styled.p`
   font-size: 20px;
   margin-bottom: 38px;
+`;
+
+const WhyThis = styled.div`
+  font-size: 20px;
+  margin-bottom: 18px;
+`;
+
+const WhyThisText = styled.div`
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.GRAY_400};
+  line-height: 24px;
+  margin-bottom: 44px;
 `;
 
 const CreatureContent = styled.div`

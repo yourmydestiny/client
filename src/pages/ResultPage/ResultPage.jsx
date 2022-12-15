@@ -6,12 +6,19 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ResultList from './ResultList';
 import PopUp from 'components/PopUp';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper.min.css';
+import 'swiper/components/navigation/navigation.min.css';
+import SwiperCore, { Navigation } from 'swiper';
 
 const ResultPage = () => {
   const [openModal, setOpenModal] = useState(true);
 
   const { state } = useLocation();
 
+  console.log(state);
+
+  SwiperCore.use([Navigation]);
   const settings = {
     dots: false,
     infinite: false,
@@ -22,10 +29,18 @@ const ResultPage = () => {
 
   return (
     <Container>
-      <StyledSlider {...settings}>
+      <Swiper>
+        <SwiperSlide>
+          <ResultList dateType={state} currentPeriod="current" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <ResultList dateType={state} currentPeriod="future" />
+        </SwiperSlide>
+      </Swiper>
+      {/* <StyledSlider {...settings}>
         <ResultList dateType={state} currentPeriod="current" />
         <ResultList dateType={state} currentPeriod="future" />
-      </StyledSlider>
+      </StyledSlider> */}
       {openModal && (
         <PopUp
           close={() => {
