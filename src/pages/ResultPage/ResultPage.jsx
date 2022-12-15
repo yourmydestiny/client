@@ -12,6 +12,8 @@ const ResultPage = () => {
 
   const { state } = useLocation();
 
+  console.log(state);
+
   const settings = {
     dots: false,
     infinite: false,
@@ -23,8 +25,8 @@ const ResultPage = () => {
   return (
     <Container>
       <StyledSlider {...settings}>
-        <ResultList state={state} dataType={state} currentPeriod="current" />
-        <ResultList state={state} dataType={state} currentPeriod="future" />
+        <ResultList dateType={state} currentPeriod="current" />
+        <ResultList dateType={state} currentPeriod="future" />
       </StyledSlider>
       {openModal && (
         <PopUp
