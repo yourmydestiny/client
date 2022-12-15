@@ -16,7 +16,8 @@ const StyledMainLayout = styled.div`
 
 const LayoutWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  display: inline-block;
+  min-height: 100vh;
 `;
 
 const BackGroundImage = styled.img`

@@ -1,3 +1,4 @@
+import ResultPage from 'pages/ResultPage/ResultPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage/MainPage';
 import SelectPage from '../pages/SelectPage/SelectPage';
@@ -7,7 +8,8 @@ export default function RootRoute() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/selectpage" element={<SelectPage></SelectPage>} />
+        <Route path="/selectpage" element={<SelectPage />} />
+        <Route path="/resultlist" element={<ResultPage />} />
       </Routes>
     </BrowserRouter>
   );
