@@ -5,6 +5,7 @@ import { useMutation } from 'react-query';
 import { postSelectedInfo } from 'apis/apis';
 import FirstQuestions from './components/FirstQuestions';
 import SecondQuestions from './components/SecondQuestions';
+import Spinner from 'components/Spinner';
 
 const SelectPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +56,7 @@ const SelectPage = () => {
   ];
 
   if (isLoading) {
-    return <div>로딩중</div>;
+    return <Spinner />;
   } else {
     return (
       <Container>
