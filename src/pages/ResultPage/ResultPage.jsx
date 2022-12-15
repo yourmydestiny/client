@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactComponent as LeftButton } from '../../assets/svg/leftButton.svg';
 import { ReactComponent as RightButton } from '../../assets/svg/rightButton.svg';
 
 const ResultPage = () => {
+  const { state } = useLocation();
+
+  console.log(state);
   const [currentPeriod, setCurrentPeriod] = useState('current');
 
   const getHeaderText = () => {

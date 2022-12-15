@@ -1,20 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useNavigate } from '../../../../node_modules/react-router-dom/dist/index';
 import { useMutation } from 'react-query';
+import styled from 'styled-components';
+import { postSelectedInfo } from 'apis/apis';
 
-const SecondQuestions = ({ selectedInfo, setSelectedInfo }) => {
-  // const postSelectedInfo = useMutation(PostDateError, {
-  //   onSuccess: data => {
-  //     let [err, result] = data;
-  //     err && console.log(result);
-  //   },
-  // });
-
-  //시간 설정 후 시간값을 서버로 보내는 함수
-  // const handleClickTimeInfo = () => {
-  //   setGetAllData(false);
-  //   postTimeInfo.mutate({ current_date: ConvertStrCurTime() });
-  // };
+const SecondQuestions = ({
+  selectedInfo,
+  setSelectedInfo,
+  handleClickSelectedInfo,
+}) => {
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -102,7 +97,13 @@ const SecondQuestions = ({ selectedInfo, setSelectedInfo }) => {
           </ContentsBox>
           {selectedInfo.fifth && selectedInfo.sixth && selectedInfo.seventh ? (
             <ButtonBox>
-              <ActiveBtn>결과보기</ActiveBtn>
+              <ActiveBtn
+                onClick={() => {
+                  handleClickSelectedInfo();
+                }}
+              >
+                결과보기
+              </ActiveBtn>
             </ButtonBox>
           ) : (
             <ButtonBox>
