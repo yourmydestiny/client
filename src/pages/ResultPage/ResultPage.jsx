@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ResultList from './ResultList';
+import PopUp from 'components/PopUp';
 
 const ResultPage = () => {
+  const [openModal, setOpenModal] = useState(true);
+
   const { state } = useLocation();
+
   const settings = {
     dots: false,
     infinite: false,
@@ -15,18 +19,25 @@ const ResultPage = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
   return (
     <Container>
       <StyledSlider {...settings}>
         <ResultList state={state} dataType={state} currentPeriod="current" />
         <ResultList state={state} dataType={state} currentPeriod="future" />
       </StyledSlider>
+      {openModal && (
+        <PopUp
+          close={() => {
+            setOpenModal(false);
+          }}
+        />
+      )}
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   padding-top: 46px;
   width: 100%;
   padding: 20px;
