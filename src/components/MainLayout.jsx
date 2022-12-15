@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledMainLayout = styled.div`
   position: relative;
-  padding: 20px;
+  padding-top: 44px;
   width: 100%;
   max-width: 430px;
   border: 1px solid black;
@@ -17,7 +17,8 @@ const StyledMainLayout = styled.div`
 
 const LayoutWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  display: inline-block;
+  min-height: 100vh;
 `;
 
 const BackGroundImage = styled.img`
@@ -31,7 +32,7 @@ const BackGroundImage = styled.img`
 const MainLayout = ({ children }) => {
   return (
     <LayoutWrapper>
-      <BackGroundImage alt=""></BackGroundImage>
+      <BackGroundImage alt="" />
       <StyledMainLayout>{children}</StyledMainLayout>
     </LayoutWrapper>
   );
