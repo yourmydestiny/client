@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledMainLayout = styled.div`
   position: relative;
-  padding: 20px;
   width: 100%;
   max-width: 430px;
   border: 1px solid black;
@@ -31,7 +30,7 @@ const BackGroundImage = styled.img`
 const MainLayout = ({ children }) => {
   return (
     <LayoutWrapper>
-      <BackGroundImage alt=""></BackGroundImage>
+      <BackGroundImage alt="" />
       <StyledMainLayout>{children}</StyledMainLayout>
     </LayoutWrapper>
   );
