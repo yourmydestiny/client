@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledMainLayout = styled.div`
   position: relative;
   width: 100%;
-  max-width: 430px;
+  max-width: 390px;
   border: 1px solid black;
   height: 100%;
   margin: auto;
@@ -24,18 +24,18 @@ const LayoutWrapper = styled.div`
 `;
 
 const MainLayout = ({ children }) => {
-  useEffect(() => {
-    document.body.style.cssText = `
-      position: fixed;
-      top: -${window.scrollY}px;
-      overflow-y: scroll;
-      width: 100%;`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = '';
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.cssText = `
+  //     position: fixed;
+  //     top: -${window.scrollY}px;
+  //     overflow-y: scroll;
+  //     width: 100%;`;
+  //   return () => {
+  //     const scrollY = document.body.style.top;
+  //     document.body.style.cssText = '';
+  //     window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+  //   };
+  // }, []);
 
   return (
     <LayoutWrapper>
