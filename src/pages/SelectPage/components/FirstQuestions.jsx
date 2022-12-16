@@ -121,12 +121,12 @@ const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
           selectedInfo.second &&
           selectedInfo.third &&
           selectedInfo.fourth ? (
-            <ButtonBox>
-              <ActTriBtn
-                onClick={() => {
-                  setPageIdx(1);
-                }}
-              />
+            <ButtonBox
+              onClick={() => {
+                setPageIdx(1);
+              }}
+            >
+              <ActTriBtn />
             </ButtonBox>
           ) : (
             <ButtonBox>
@@ -228,6 +228,7 @@ const ActiveSelectItem = styled(SelectItem)`
 `;
 
 const ButtonBox = styled.div`
+  margin-top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -8,7 +8,6 @@ import { ReactComponent as Check } from '../../assets/svg/check.svg';
 import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 import { ReactComponent as Clock } from '../../assets/svg/clock.svg';
 import { ReactComponent as Location } from '../../assets/svg/location.svg';
-import { CopyToClipboard } from 'react-copy-to-clipboard/src';
 
 const ResultList = ({ currentPeriod, dateType }) => {
   const nullType = dateType === null ? 'beomseom' : dateType;
@@ -173,13 +172,6 @@ const ResultList = ({ currentPeriod, dateType }) => {
       {copiedState && <CopiedText>클립보드에 저장되었습니다.</CopiedText>}
       <ClipboardContainer>
         <ClipboardText>{CURRENT_URL}</ClipboardText>
-        {/* <CopyToClipboard
-          className="Toram"
-          text={CURRENT_URL}
-          // onCopy={() => handleCopy()}
-        >
-          복사
-        </CopyToClipboard> */}
         <ClipboardButton copiedState={copiedState} onClick={handleCopy}>
           복사
         </ClipboardButton>
@@ -199,7 +191,7 @@ const Container = styled.div`
   width: 100%;
   padding-top: 46px;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.GRAY_000};
   background-color: ${({ theme }) => theme.colors.MAIN_BACKGROUND};
@@ -230,6 +222,7 @@ const MainText = styled.div`
   font-weight: 500;
   line-height: 24px;
   font-size: 15px;
+  white-space: pre-wrap;
 `;
 
 const SubFirstText = styled.p`
@@ -300,10 +293,7 @@ const NoService = styled.div`
   margin-bottom: 49px;
 `;
 
-const SubSecondImage = styled.img`
-  width: 88px;
-  height: 89px;
-`;
+const SubSecondImage = styled.img``;
 
 const SubSecondName = styled.div`
   font-size: 15px;
@@ -335,7 +325,7 @@ const AroundSoloContainer = styled.a`
   display: flex;
   background-color: white;
   width: 100%;
-  border-radius: 28px;
+  border-radius: 11px;
   height: 110px;
   margin-bottom: 15px;
   padding: 10px 12px;
