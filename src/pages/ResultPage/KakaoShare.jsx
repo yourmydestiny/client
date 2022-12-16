@@ -34,10 +34,10 @@ const KakaoShare = ({ title, description, image }) => {
       },
       buttons: [
         {
-          title: '굿',
+          title: '나도 테스트하러 가기',
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: 'https://mytamla.netlify.app',
+            webUrl: 'https://mytamla.netlify.app',
           },
         },
       ],

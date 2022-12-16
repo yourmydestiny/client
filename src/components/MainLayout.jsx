@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledMainLayout = styled.div`
@@ -6,7 +6,7 @@ const StyledMainLayout = styled.div`
   width: 100%;
   max-width: 430px;
   border: 1px solid black;
-  height: 100%;
+  height: calc(100% + 2px);
   margin: auto;
   ::-webkit-scrollbar {
     display: none;
@@ -17,28 +17,12 @@ const StyledMainLayout = styled.div`
 const LayoutWrapper = styled.div`
   width: 100%;
   display: inline-block;
-  height: calc(100vh);
-  .scrollLock {
-    overflow: hidden;
-  }
+  height: 100vh;
 `;
 
 const MainLayout = ({ children }) => {
-  // useEffect(() => {
-  //   document.body.style.cssText = `
-  //     position: fixed;
-  //     top: -${window.scrollY}px;
-  //     overflow-y: scroll;
-  //     width: 100%;`;
-  //   return () => {
-  //     const scrollY = document.body.style.top;
-  //     document.body.style.cssText = '';
-  //     window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
-  //   };
-  // }, []);
-
   return (
-    <LayoutWrapper>
+    <LayoutWrapper className="test">
       <StyledMainLayout>{children}</StyledMainLayout>
     </LayoutWrapper>
   );

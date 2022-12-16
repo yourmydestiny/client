@@ -97,7 +97,37 @@ const ResultList = ({ currentPeriod, dateType }) => {
           );
         })}
       </SubSecondImageContainer>
-      <SubThirdText>주변에 이런 곳은 어때요?</SubThirdText>
+      {currentPeriod === 'future' ? (
+        <>
+          <FutureHow>주변에 이런 곳은 어떄요?</FutureHow>
+          <NoService>서비스 지역이 아닙니다.</NoService>
+        </>
+      ) : (
+        ''
+      )}
+      {currentPeriod === 'future' ? (
+        <WhyThis>왜 이렇게 되었을까요?</WhyThis>
+      ) : (
+        ''
+      )}
+      {currentPeriod === 'future' ? (
+        <WhyThisText>
+          온실가스 배출이 늘어나면서 수온이 상승해
+          <br />
+          토종 생물들이 더 이상 살 수 없게 되었어요.
+          <br /> 해수면 상승이 가속화되어 제주가 빠르게 잠겼어요.
+          <br />
+          해양쓰레기가 늘어나면서 생물들이 살기 어려운 환경이 되어갔어요. 우리가
+          가고 싶은 제주는 이렇게 사라져가요.
+        </WhyThisText>
+      ) : (
+        ''
+      )}
+      <SubThirdText>
+        {currentPeriod === 'future'
+          ? '이런 곳에 참여해볼까요?'
+          : '주변에 이런 곳은 어떄요?'}
+      </SubThirdText>
       <AroundContainer>
         {data?.data[periodIndex].place.map((value, index) => {
           return (
@@ -118,24 +148,6 @@ const ResultList = ({ currentPeriod, dateType }) => {
           );
         })}
       </AroundContainer>
-      {currentPeriod === 'future' ? (
-        <WhyThis>왜 이렇게 되었을까요?</WhyThis>
-      ) : (
-        ''
-      )}
-      {currentPeriod === 'future' ? (
-        <WhyThisText>
-          온실가스 배출이 늘어나면서 수온이 상승해
-          <br />
-          토종 생물들이 더 이상 살 수 없게 되었어요.
-          <br /> 해수면 상승이 가속화되어 제주가 빠르게 잠겼어요.
-          <br />
-          해양쓰레기가 늘어나면서 생물들이 살기 어려운 환경이 되어갔어요. 우리가
-          가고 싶은 제주는 이렇게 사라져가요.
-        </WhyThisText>
-      ) : (
-        ''
-      )}
       <FitFriendContainer>
         {friends.map((friend, index) => {
           return (
@@ -183,7 +195,7 @@ const Container = styled.div`
   width: 100%;
   padding-top: 46px;
   height: 100%;
-  overflow: auto;
+  overflow: scroll;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.GRAY_000};
   background-color: ${({ theme }) => theme.colors.MAIN_BACKGROUND};
@@ -268,8 +280,20 @@ const SubSecondImageContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: auto;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   width: 350px;
+`;
+
+const FutureHow = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 18px;
+`;
+
+const NoService = styled.div`
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.GRAY_400};
+  margin-bottom: 49px;
 `;
 
 const SubSecondImage = styled.img`
