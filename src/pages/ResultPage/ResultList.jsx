@@ -101,17 +101,17 @@ const ResultList = ({ currentPeriod, dateType }) => {
       <AroundContainer>
         {data?.data[periodIndex].place.map((value, index) => {
           return (
-            <AroundSoloContainer key={index}>
-              <AroundImage src={value.loacationImage} />
+            <AroundSoloContainer href={value.url} key={index}>
+              <AroundImage src={value.image} />
               <AroundTexts>
-                <div className="title">제목</div>
+                <div className="title">{value.name}</div>
                 <div className="container">
                   <Clock />
-                  <div className="text">어딘가</div>
+                  <div className="text">{value.location}</div>
                 </div>
                 <div className="container">
                   <Location />
-                  <div className="text">몇시</div>
+                  <div className="text">{value.time}</div>
                 </div>
               </AroundTexts>
             </AroundSoloContainer>
@@ -303,7 +303,7 @@ const AroundContainer = styled.div`
   margin-bottom: 51px;
 `;
 
-const AroundSoloContainer = styled.div`
+const AroundSoloContainer = styled.a`
   display: flex;
   background-color: white;
   width: 100%;
