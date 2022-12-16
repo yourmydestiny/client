@@ -227,6 +227,7 @@ const MainText = styled.div`
 
 const SubFirstText = styled.p`
   font-size: 20px;
+  font-weight: 500;
   margin-bottom: 12px;
 `;
 
@@ -236,8 +237,8 @@ const SubFirstMain = styled.div`
 `;
 
 const SubFirstImage = styled.img`
-  width: 236px;
-  height: 134px;
+  width: 280px;
+  height: 170px;
   display: block;
   margin: auto;
   margin-bottom: 50px;
