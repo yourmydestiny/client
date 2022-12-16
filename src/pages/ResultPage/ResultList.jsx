@@ -191,7 +191,7 @@ const Container = styled.div`
   width: 100%;
   padding-top: 46px;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   font-size: 15px;
   color: ${({ theme }) => theme.colors.GRAY_000};
   background-color: ${({ theme }) => theme.colors.MAIN_BACKGROUND};
