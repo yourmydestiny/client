@@ -6,6 +6,8 @@ import { getResultInfo } from 'apis/apis';
 import { useQuery } from 'react-query';
 import { ReactComponent as Check } from '../../assets/svg/check.svg';
 import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
+import { ReactComponent as Clock } from '../../assets/svg/clock.svg';
+import { ReactComponent as Location } from '../../assets/svg/location.svg';
 
 const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
   const { data } = useQuery('getResultInfo', () => getResultInfo(dateType), {
@@ -93,7 +95,22 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
       <SubThirdText>주변에 이런 곳은 어때요?</SubThirdText>
       <AroundContainer>
         {data?.data[periodIndex].place.map((value, index) => {
-          return <AroundSolo key={index} src={value.image} />;
+          return (
+            <AroundSoloContainer key={index}>
+              <AroundImage src={value.loacationImage} />
+              <AroundTexts>
+                <div className="title">제목</div>
+                <div className="container">
+                  <Clock />
+                  <div className="text">어딘가</div>
+                </div>
+                <div className="container">
+                  <Location />
+                  <div className="text">몇시</div>
+                </div>
+              </AroundTexts>
+            </AroundSoloContainer>
+          );
         })}
       </AroundContainer>
       {currentPeriod === 'future' ? (
@@ -275,12 +292,41 @@ const AroundContainer = styled.div`
   margin-bottom: 51px;
 `;
 
-const AroundSolo = styled.img`
-  display: block;
+const AroundSoloContainer = styled.div`
+  display: flex;
+  background-color: white;
   width: 100%;
   border-radius: 28px;
   height: 110px;
   margin-bottom: 15px;
+  padding: 10px 12px;
+`;
+
+const AroundImage = styled.img`
+  width: 40%;
+  height: 100%;
+  margin-right: 18px;
+  border-radius: 12px;
+`;
+
+const AroundTexts = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  .title {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .container {
+    display: flex;
+    font-size: 13px;
+  }
+  .text {
+    margin-left: 6px;
+    margin-bottom: 4px;
+  }
 `;
 
 const FitFriendContainer = styled.div`
