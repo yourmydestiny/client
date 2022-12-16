@@ -8,7 +8,6 @@ import { ReactComponent as Check } from '../../assets/svg/check.svg';
 import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 import { ReactComponent as Clock } from '../../assets/svg/clock.svg';
 import { ReactComponent as Location } from '../../assets/svg/location.svg';
-import { CopyToClipboard } from 'react-copy-to-clipboard/src';
 
 const ResultList = ({ currentPeriod, dateType }) => {
   const nullType = dateType === null ? 'beomseom' : dateType;
@@ -230,6 +229,7 @@ const MainText = styled.div`
   font-weight: 500;
   line-height: 24px;
   font-size: 15px;
+  white-space: pre-wrap;
 `;
 
 const SubFirstText = styled.p`
