@@ -25,10 +25,8 @@ const KakaoShare = ({ title, description, image }) => {
         description,
         imageUrl: image,
         link: {
-          mobileWebUrl:
-            'https://upload3.inven.co.kr/upload/2021/05/11/bbs/i15045581284.jpg',
-          webUrl:
-            'https://upload3.inven.co.kr/upload/2021/05/11/bbs/i15045581284.jpg',
+          mobileWebUrl: 'https://mytamla.netlify.app',
+          webUrl: 'https://mytamla.netlify.app',
         },
       },
       buttons: [
