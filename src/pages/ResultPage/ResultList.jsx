@@ -325,7 +325,7 @@ const AroundSoloContainer = styled.a`
   display: flex;
   background-color: white;
   width: 100%;
-  border-radius: 28px;
+  border-radius: 11px;
   height: 110px;
   margin-bottom: 15px;
   padding: 10px 12px;
