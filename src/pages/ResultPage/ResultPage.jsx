@@ -17,6 +17,8 @@ const ResultPage = () => {
 
   SwiperCore.use([Navigation]);
 
+  console.log(state);
+
   return (
     <Container>
       <Swiper>

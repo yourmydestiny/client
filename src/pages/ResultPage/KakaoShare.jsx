@@ -6,7 +6,6 @@ const KakaoShare = ({ title, description, image }) => {
     initKakao(); //
   }, []);
 
-  console.log(image);
   //자바스크립트키로 카카오 init
   const initKakao = () => {
     if (window.Kakao) {

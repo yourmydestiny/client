@@ -4,8 +4,6 @@ import { ReactComponent as DisTriBtn } from '../../../assets/svg/disTriBtn.svg';
 import { ReactComponent as ActTriBtn } from '../../../assets/svg/actTriBtn.svg';
 
 const FirstQuestions = ({ selectedInfo, setSelectedInfo, setPageIdx }) => {
-  console.log(selectedInfo);
-
   return (
     <Container>
       <HeaderText>가장 나다운 말을 선택해주세요.</HeaderText>
