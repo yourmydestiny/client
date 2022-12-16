@@ -172,13 +172,6 @@ const ResultList = ({ currentPeriod, dateType }) => {
       {copiedState && <CopiedText>클립보드에 저장되었습니다.</CopiedText>}
       <ClipboardContainer>
         <ClipboardText>{CURRENT_URL}</ClipboardText>
-        {/* <CopyToClipboard
-          className="Toram"
-          text={CURRENT_URL}
-          // onCopy={() => handleCopy()}
-        >
-          복사
-        </CopyToClipboard> */}
         <ClipboardButton copiedState={copiedState} onClick={handleCopy}>
           복사
         </ClipboardButton>
@@ -300,10 +293,7 @@ const NoService = styled.div`
   margin-bottom: 49px;
 `;
 
-const SubSecondImage = styled.img`
-  width: 88px;
-  height: 89px;
-`;
+const SubSecondImage = styled.img``;
 
 const SubSecondName = styled.div`
   font-size: 15px;
