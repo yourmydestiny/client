@@ -83,8 +83,8 @@ const ResultList = ({ currentPeriod, dateType }) => {
       <SubSecondImageContainer>
         {data?.data[periodIndex].holdingCreature.map((value, index) => {
           return (
-            <CreatureContent>
-              <SubSecondImage key={index} src={value.image} />
+            <CreatureContent key={index}>
+              <SubSecondImage src={value.image} />
               <SubSecondName>{value?.name}</SubSecondName>
               <KindContainer>
                 {value.kind === '보호종' ? <Check /> : <UnCheck />}
@@ -148,7 +148,7 @@ const ResultList = ({ currentPeriod, dateType }) => {
       <FitFriendContainer>
         {friends.map((friend, index) => {
           return (
-            <FriendContainer>
+            <FriendContainer key={index}>
               {index === 0 ? (
                 <>
                   <FitFriendImage src={data?.data[periodIndex].friend} />{' '}
