@@ -39,7 +39,6 @@ const ResultPage = () => {
 };
 
 const Container = styled.div`
-  position: relative;
   padding-top: 46px;
   width: 100%;
   padding: 20px;

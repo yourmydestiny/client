@@ -9,12 +9,17 @@ import { ReactComponent as UnCheck } from '../../assets/svg/unCheck.svg';
 import { ReactComponent as Clock } from '../../assets/svg/clock.svg';
 import { ReactComponent as Location } from '../../assets/svg/location.svg';
 
-const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
-  const { data } = useQuery('getResultInfo', () => getResultInfo(dateType), {
-    refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
-    onSuccess: data => {},
-    onError: e => {},
-  });
+const ResultList = ({ currentPeriod, dateType }) => {
+  const { data } = useQuery(
+    'getResultInfo',
+    () => getResultInfo((dateType = 'beomseom')),
+    {
+      refetchOnWindowFocus: false, // react-query는 사용자가 사용하는 윈도우가 다른 곳을 갔다가 다시 화면으로 돌아오면 이 함수를 재실행합니다. 그 재실행 여부 옵션 입니다.
+      onSuccess: data => {},
+      onError: e => {},
+    }
+  );
+  console.log(data);
   const [copiedState, setCopiedState] = useState(false);
   const periodIndex = currentPeriod === 'current' ? 0 : 1;
   const CURRENT_URL = 'https://mytamla.netlify.app/';
@@ -77,7 +82,7 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
         <SubFirstMainText>{data?.data[periodIndex].location}</SubFirstMainText>
       </SubFirstMain>
       <SubFirstImage src={data?.data[periodIndex].locationImage} />
-      <SubSecondText>내가 가진 식물은?</SubSecondText>
+      <SubSecondText>내가 가진 생물은?</SubSecondText>
       <SubSecondImageContainer>
         {data?.data[periodIndex].holdingCreature.map((value, index) => {
           return (
@@ -138,12 +143,18 @@ const ResultList = ({ currentPeriod, dateType = 'beomseom' }) => {
               {index === 0 ? (
                 <>
                   <FitFriendImage src={data?.data[periodIndex].friend} />{' '}
-                  <div>잘 맞는 친구</div>
+                  <div className="friend">잘 맞는 친구</div>
+                  <div className="friendTitle">
+                    {data?.data[periodIndex].friendName}
+                  </div>
                 </>
               ) : (
                 <>
                   <FitFriendImage src={data?.data[periodIndex].enemy} />{' '}
-                  <div>잘 안맞는 친구</div>
+                  <div className="friend">잘 안맞는 친구</div>
+                  <div className="friendTitle">
+                    {data?.data[periodIndex].enemyName}
+                  </div>
                 </>
               )}
             </FriendContainer>
@@ -341,6 +352,17 @@ const FriendContainer = styled.div`
   text-align: center;
   font-weight: 700;
   font-size: 20px;
+  .friend {
+    margin-bottom: 4px;
+    color: ${({ theme }) => theme.colors.GRAY_000};
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .friendTitle {
+    font-size: 17px;
+    color: ${({ theme }) => theme.colors.GRAY_500};
+    font-weight: 300;
+  }
 `;
 
 const FitFriendImage = styled.img`
