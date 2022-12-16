@@ -237,7 +237,7 @@ const SubFirstMain = styled.div`
 
 const SubFirstImage = styled.img`
   width: 236px;
-  height: 133px;
+  height: 134px;
   display: block;
   margin: auto;
   margin-bottom: 50px;
