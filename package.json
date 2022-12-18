@@ -17,8 +17,6 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "react-snowfall": "^1.2.1",
-    "recoil": "^0.7.6",
-    "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
     "swiper": "^6.8.4",
     "web-vitals": "^2.1.4"

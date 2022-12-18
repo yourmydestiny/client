@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import ResultList from './ResultList';
 import PopUp from 'components/PopUp';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,8 +14,6 @@ const ResultPage = () => {
   const { state } = useLocation();
 
   SwiperCore.use([Navigation]);
-
-  console.log(state);
 
   return (
     <Container>
