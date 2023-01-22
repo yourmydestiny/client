@@ -3,7 +3,7 @@ import axios from '../../node_modules/axios/index';
 
 export const postSelectedInfo = async data => {
   try {
-    const response = await axios.post(`https://mytamra.ga/api/coasts`, data);
+    const response = await axios.post(`https://mytamla.shop/api/coasts`, data);
 
     if (response.status === 200) {
       return response.data;
@@ -18,7 +18,7 @@ export const postSelectedInfo = async data => {
 export const getResultInfo = async coastType => {
   try {
     const response = await basicApi.get(
-      `https://mytamra.ga/api/coasts/${coastType}`
+      `https://mytamla.shop/api/coasts/${coastType}`
     );
     if (response.status === 200) {
       return response.data;
